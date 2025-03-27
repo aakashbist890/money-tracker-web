@@ -1,6 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
+export const api = axios.create({
+  baseURL: "/api",
+});
+
 export const useTransactionGetMany = () => {
   return useQuery({
     queryKey: ["transactions"],
