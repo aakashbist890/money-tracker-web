@@ -21,7 +21,7 @@ interface SpendingChartData {
   monthly_insights?: MonthlyInsights;
 }
 
-export function SpendingChart({ data }: { data?: SpendingChartData }) {
+export function SpendingChart({ data }: { data?: any }) {
   // transform backend data to Recharts format
   const chartData = Object.entries(
     data?.monthly_insights?.amount?.sum || {}
