@@ -5,13 +5,18 @@ export async function POST(request: Request) {
   console.log("Login atte,pt:", body.email);
 
   const djangoResponse = await fetch(
-    `${process.env.DJANGO_API_URL}/auth/login/`,
+    `${process.env.DJANGO_API_URL}/api/auth/login/`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        username: body.email.includes('@') ? 
+                  body.email.split('@')[0] : 
+                  body.email,
+        password: body.password
+      }),
     }
   );
 
